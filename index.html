@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>jQuery To-Do App</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+<body>
+
+<h1>jQuery To-Do List Maker</h1>
+<br/>
+
+<div class="todo-inputs">
+
+	<input class="form-control" type="text" id="todo-input-bar" placeholder="Enter your to-do item, then press Submit">
+
+	<button type="button" class="btn btn-primary btn-md" id="submit-button">Submit</button>
+
+<hr/>
+
+</div>
+
+<div class="todo-list">
+	<h2>To Do:</h2>
+	<div id="todo-items-output"></div>
+</div>
+
+<hr/>
+<div class="completed-list">
+	<h2>Completed Tasks:</h2>
+	<div id="completed-items-output"></div>
+
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+<script src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="javascripts/main.js"></script>
+</body>
+</html>

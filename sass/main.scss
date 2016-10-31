@@ -1,0 +1,74 @@
+body {
+	background-color: lightgrey; //this is just to test
+}
+
+h1 {
+	margin-left: 25px;
+}
+
+#todo-input-bar {
+	margin-left: 25px;
+	width: 500px;
+}
+
+#submit-button {
+	margin-left: 25px;
+	margin-top: 5px;
+}
+
+.todo-list {
+	margin-left: 25px;
+}
+
+.form-control { //this is from bootstrap, and I've added these properties:
+	margin-top: 5px;
+	width: 500px;
+}
+
+.completed-list {
+	margin-left: 25px;
+	margin-top: 25px;
+
+	h2 {
+		color: green;
+	}
+
+	textarea {
+		background-color: lightgreen;
+		color: green;
+		font-weight: 150%;
+	}
+}
+
+
+
+
+
+//Buttons:
+.completeBtn {
+	background-color: green;
+	border-color: darkgreen;
+	margin-top: 5px;
+}
+
+.deleteBtn {
+	color: red;
+	margin-top: 7px;
+	margin-left: 3px;
+	border-color: red;
+	background-color: darkred;
+}
+
+.editBtn {
+	color: blue;
+	margin-top: 7px;
+	margin-left: 3px;
+	border-color: blue;
+	background-color: lightblue;
+}
+
+.uncompleteBtn {
+	border-color: darkgrey;
+	margin-top: 7px;
+	margin-left: 3px;
+}
