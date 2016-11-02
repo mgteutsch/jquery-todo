@@ -9,9 +9,23 @@
 </head>
 <body>
 
-<h1>jQuery To-Do List Maker</h1>
+<div class="container col-xs-4 col-xs-offset-4" id="login-container">
+        <h1 class="form-signin-heading">Todo App</h1>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required>
+        <button class="btn btn-lg btn-success col-xs-6" id="loginButton">Login</button>
+        <button class="btn btn-lg btn-primary col-xs-6" id="registerButton">Register</button>
+    </div>
+
+<br/>
 <br/>
 
+
+<div class="col-xs-offset-2 col-xs-8 hide" id="todo-container">
+<!--the above div is set to hide/show per login/registration -->
+
+<h1>jQuery To-Do App, with Firebase</h1>
 <div class="todo-inputs">
 
 	<input class="form-control" type="text" id="todo-input-bar" placeholder="Enter your to-do item, then press Submit">
@@ -25,18 +39,26 @@
 <div class="todo-list">
 	<h2>To Do:</h2>
 	<div id="todo-items-output"></div>
+	<ul id="incomplete-tasks"></ul> <!--was added during Firebase demo -->
 </div>
 
 <hr/>
 <div class="completed-list">
 	<h2>Completed Tasks:</h2>
 	<div id="completed-items-output"></div>
+	<ul id="completed-tasks"></ul> <!--was added during Firebase demo -->
 
+</div>
+
+<!--now close the hide per login/registration div-->
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
 <script src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="javascripts/main.js"></script>
+<script src="/javascripts/firebase.js"></script>
+<script src="/javascripts/firebaseMethods.js"></script> <!--becasue this augments firebase.js, it must go AFTER -->
+<script src="/javascripts/firebaseAuth.js"></script>
+<script src="/javascripts/main.js"></script>
 </body>
 </html>

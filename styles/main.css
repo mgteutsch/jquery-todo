@@ -52,3 +52,15 @@ h1 {
   border-color: darkgrey;
   margin-top: 7px;
   margin-left: 3px; }
+
+/* From Zoe's example: */
+.inputTask {
+  display: none; }
+
+ul li.editMode input[type=text] {
+  display: block; }
+
+ul li.editMode label {
+  display: none; }
+
+/* ^^^ From Zoe's example */
