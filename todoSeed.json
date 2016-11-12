@@ -8,11 +8,21 @@
 		"item1": {
 			"task": "eat chips",
 			"isCompleted": false,
-			"uid": "AVxV83r56zUfZctg8El3rnfQ4Mg2"
+			"uid": "AVxV83r56zUfZctg8El3rnfQ4Mg2" 
 		},
 		"item2": {
 			"task": "take a nap",
 			"isCompleted": false,
+			"uid": "nlUjwTesFpY0rs89UVbgLhftGE83" 
+		}
+	},
+	"users":{
+		"user1":{
+			"username": "a",
+			"uid": "AVxV83r56zUfZctg8El3rnfQ4Mg2"
+		},
+		"user2":{
+			"username": "b",
 			"uid": "nlUjwTesFpY0rs89UVbgLhftGE83"
 		}
 	}

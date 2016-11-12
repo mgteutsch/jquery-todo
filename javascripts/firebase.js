@@ -1,6 +1,6 @@
 "use strict";
 
-//Need to create and IIFE, using FbAPI as the variable
+//Need to create an IIFE, using FbAPI as the variable
 
 var FbAPI = (function(){
     return {

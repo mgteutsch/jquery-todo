@@ -42,6 +42,16 @@ function putTodoInDOM (){
 }
 
 
+function createLogoutButton(){
+	FbAPI.getUser(apiKeys, uid).then(function(userResponse){
+		$('#logout-container').html("");
+		let currentUsername = userResponse.username;
+		let logoutButton = `<button class="btn btn-danger" id="logoutButton">Logout ${currentUsername}</button>`;
+		$('#logout-container').append(logoutButton);
+	});
+}
+
+
 $(document).ready(function(){
 	FbAPI.firebaseCredentials().then(function(keys){
 		console.log("keys", keys);
@@ -58,7 +68,8 @@ $(document).ready(function(){
 	$('#submit-button').on('click', function(){
 		let newItem = {
 			"task": $('#todo-input-bar').val(),
-			"isCompleted":false
+			"isCompleted":false,
+			"uid": uid
 		};
 
 		FbAPI.addTodo(apiKeys, newItem).then(function(){
@@ -82,7 +93,8 @@ $('ul').on("click", ".edit", function(){
 		let itemId = $(this).data("firebaseid");
 		let editedItem = {
 			"task": parent.find(".inputTask").val(),
-			"isCompleted": false
+			"isCompleted": false,
+			"uid": uid
 		};
 		FbAPI.editTodo(apiKeys, itemId, editedItem).then(function(response) {
 			parent.removeClass("editMode");
@@ -99,7 +111,8 @@ $('ul').on("change", 'input[type="checkbox"]', function(){
   console.log("itemId: ", itemId);
   let editedItem = {
     "task": task,
-    "isCompleted": !updatedIsCompleted
+    "isCompleted": !updatedIsCompleted,
+    "uid": uid
   };
   FbAPI.editTodo(apiKeys, itemId, editedItem).then(function(){
     putTodoInDOM();
@@ -109,18 +122,28 @@ $('ul').on("change", 'input[type="checkbox"]', function(){
 $('#registerButton').on('click', function() {
 	let email = $('#inputEmail').val();	
 	let password = $('#inputPassword').val();
-
+	let username = $('#inputUsername').val();
 	let user = {
 		"email": email,
 		"password": password
 	};
 
-	FbAPI.registerUser(user).then(function(response) {
-		console.log("register response: ", response);
-		return FbAPI.loginUser(user);		
+	FbAPI.registerUser(user).then(function(registerResponse) {
+		console.log("register response: ", registerResponse);
+		let uid = registerResponse;
+		let newUser = {
+			"username": username,
+			"uid": registerResponse
+		};
+		return FbAPI.addUser(apiKeys, newUser);
+		//return FbAPI.loginUser(user);
+	}).then(function(addUserResponse){
+
+		return FbAPI.loginUser(user);
 	}).then(function(loginResponse){
 		console.log("login response", loginResponse);
 		uid = loginResponse.uid;
+		createLogoutButton();
 		putTodoInDOM();
 		$('#login-container').addClass("hide");
 		$('#todo-container').removeClass("hide");
@@ -137,6 +160,7 @@ $('#loginButton').on('click', function() {
 	};
 	FbAPI.loginUser(user).then(function(loginResponse){
 		uid = loginResponse.uid;
+		createLogoutButton();
 		putTodoInDOM();
 		$('#login-container').addClass("hide");
 		$('#todo-container').removeClass("hide");
@@ -144,7 +168,17 @@ $('#loginButton').on('click', function() {
 
 });
 
-
+$('#logout-container').on("click", "#logoutButton", function(){
+	FbAPI.logoutUser();
+	uid = "";
+	$('#incomplete-tasks').html(""); //clears this div
+	$('completed-tasks').html(""); //clears this one, too
+	$('#inputEmail').val(""); // before showing to login section, deletes email	
+	$('#inputPassword').val(""); // before showing to login section, deletes password
+	$('#inputUsername').val(""); // before showing to login section, deletes username
+	$('#login-container').removeClass("hide"); //shows the login section
+	$('#todo-container').addClass("hide"); //hides the other sections
+});
 
 
 });

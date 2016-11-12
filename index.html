@@ -26,6 +26,9 @@
 <!--the above div is set to hide/show per login/registration -->
 
 <h1>jQuery To-Do App, with Firebase</h1>
+
+<div id="logout-container"></div> <!--adds logout dynamically -->
+
 <div class="todo-inputs">
 
 	<input class="form-control" type="text" id="todo-input-bar" placeholder="Enter your to-do item, then press Submit">
@@ -35,6 +38,7 @@
 <hr/>
 
 </div>
+
 
 <div class="todo-list">
 	<h2>To Do:</h2>
@@ -54,11 +58,24 @@
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/3.5.2/firebase.js"></script>
-<script src="/lib/bower_components/jquery/dist/jquery.min.js"></script>
+<!--<script src="/lib/bower_components/jquery/dist/jquery.min.js"></script>-->
+
+<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+
+<!--I commented out the above to convert it to cdn so that users don't have to download all this shit, this is similar to bootstrap (below) and firebase (above)
+
+I got the above by googling jQuery cdn... go here: https://code.jquery.com/
+
+I selected the uncompressed version
+-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="/javascripts/firebase.js"></script>
 <script src="/javascripts/firebaseMethods.js"></script> <!--becasue this augments firebase.js, it must go AFTER -->
 <script src="/javascripts/firebaseAuth.js"></script>
+<script src="/javascripts/firebaseUser.js"></script>
 <script src="/javascripts/main.js"></script>
 </body>
 </html>
